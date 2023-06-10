@@ -1,26 +1,34 @@
 import { useState, useContext, createContext, useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 import Styles from "./styles.module.css";
 import travelIcon from "./images/travel.png";
 
+import { getPosts } from "./actions/posts.js";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   return (
     <Container maxWidth="lg">
-      <AppBar className={Styles.appBar} position="static" color="inherit">
-        <Typography className={Styles.heading} variant="h1" fontSize={"50px"}>
-          Travel note
-        </Typography>
+      <div className={Styles.appBar} position="static" color="inherit">
         <img
           className={Styles.image}
           src={travelIcon}
           alt="travel-image"
           height="60"
         />
-      </AppBar>
+        <Typography className={Styles.heading} variant="h1" fontSize={"50px"}>
+          Travel note
+        </Typography>
+      </div>
       <Grow in>
         <Container>
           <Grid

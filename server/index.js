@@ -14,9 +14,10 @@ app.use(cors());
 app.use("/posts", postRoutes);
 
 const CONNECTION_URL =
-  // "mongodb+srv://js_mastery:123123123@practice.jto9p.mongodb.net/test";
-  "mongodb+srv://travel-app:travel-app123@cluster0.5xoiji5.mongodb.net/";
+  // "mongodb+srv://travel-app:travel-app123@cluster0.5xoiji5.mongodb.net/";
+  "mongodb+srv://travel-app:travel-app123@cluster0.5xoiji5.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 8000;
+// const PORT = process.env.PORT || 5173;
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
